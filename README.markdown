@@ -5,6 +5,8 @@ QuickAuth is a method for webapp authenticaton using Javascript bookmarklets for
 
 QuickAuth allows for quick and easy login to a site by eliminating the need to remember and type a potentially difficult password. This benefit is fully realized on mobile devices where the keyboard controls often make strong passwords difficult to fully enter.
 
+Original blog post http://benjeavons.com/auth-urls
+
 ### Links
 
 Bookmarklet compilers:
