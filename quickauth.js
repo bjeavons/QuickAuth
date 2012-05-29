@@ -1,5 +1,6 @@
 url = "http://example.com/quickauth";
-hash = SHA256("server-token");
+uid = "username-or-id"
+secret = "shared-server-secret"
 /* DO NOT EDIT BELOW THIS LINE */
 function SHA256(s){var chrsz=8;var hexcase=0;function safe_add(x,y){var lsw=(x&0xFFFF)+(y&0xFFFF);var msw=(x>>16)+(y>>16)+(lsw>>16);return(msw<<16)|(lsw&0xFFFF);}
 function S(X,n){return(X>>>n)|(X<<(32-n));}
@@ -24,6 +25,7 @@ hex_tab.charAt((binarray[i>>2]>>((3-i%4)*8))&0xF);}
 return str;}
 s=Utf8Encode(s);return binb2hex(core_sha256(str2binb(s),s.length*chrsz));}
 ti = Math.round(new Date().getTime() / 1000);
+hash = SHA256(uid+secret+ti);
 form = document.createElement("form");
 form.setAttribute("method", "post");
 form.setAttribute("action", url);
@@ -32,6 +34,11 @@ hashField.setAttribute("type", "hidden");
 hashField.setAttribute("name", "hash");
 hashField.setAttribute("value", hash);
 form.appendChild(hashField);
+uidField = document.createElement("input");
+uidField.setAttribute("type", "hidden");
+uidField.setAttribute("name", "uid");
+uidField.setAttribute("value", uid);
+form.appendChild(uidField);
 tiField = document.createElement("input");
 tiField.setAttribute("type", "hidden");
 tiField.setAttribute("name", "timestamp");
